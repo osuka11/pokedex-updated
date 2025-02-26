@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/pokemon_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_gray"
+            android:textSize="16sp"
+            android:minWidth="42dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_alignParentStart="true"
+            tools:text="25" />
+
+        <TextView
+            android:id="@+id/pokemon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/text_black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:layout_toEndOf="@id/pokemon_id"
+            tools:text="Pikachu" />
+
+        <ImageView
+            android:id="@+id/pokemon_type_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="10dp"
+            tools:srcCompat="@drawable/fire_icon" />
+
+
+    </RelativeLayout>
+</layout>
