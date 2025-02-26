@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_black">#111111</color>
+    <color name="text_gray">#4C5957</color>
+    <color name="hp_background">#B8AF5B</color>
+    <color name="attack_background">#8F8101</color>
+    <color name="defense_background">#AFCDF3</color>
+    <color name="speed_background">#F3DB03</color>
 </resources>
