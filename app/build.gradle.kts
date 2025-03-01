@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.ktx)
     implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.recyclerView)
+    implementation(libs.glide)
 
 
     testImplementation(libs.junit)

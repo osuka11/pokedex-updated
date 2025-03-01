@@ -1,5 +1,6 @@
 package com.example.pokedex
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,18 @@ import com.example.pokedex.databinding.FragmentListBinding
 
 
 class ListFragment : Fragment() {
-
+    interface PokemonSelectedListener{
+        fun onPokemonSelected(pokemon: Pokemon)
+    }
+    private lateinit var pokemonSelectedListener: PokemonSelectedListener
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        pokemonSelectedListener = try {
+            context as PokemonSelectedListener
+        }catch (e: java.lang.ClassCastException){
+            throw ClassCastException("$context must implement PokemonSelectedListener")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
