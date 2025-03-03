@@ -1,6 +1,7 @@
 package com.example.pokedex
 
 import android.graphics.drawable.Drawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -60,6 +61,9 @@ class DetailsFragment : Fragment() {
 
 
         }).into(imageView)
+
+        val mediaPlayer = MediaPlayer.create(requireActivity(),pokemon.sound)
+        mediaPlayer.start()
 
     }
 

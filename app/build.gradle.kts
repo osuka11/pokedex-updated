@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
@@ -49,7 +50,8 @@ dependencies {
     implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.recyclerView)
     implementation(libs.glide)
-
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
