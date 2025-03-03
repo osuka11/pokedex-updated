@@ -7,26 +7,15 @@
 
     </data>
 
-    <RelativeLayout
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_nav_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/detail_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.example.pokedex.DetailsFragment"
-            tools:layout="@layout/fragment_details">
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_nav_graph">
 
-        </androidx.fragment.app.FragmentContainerView>
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/list_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/detail_fragment"
-            android:layout_alignParentBottom="true"
-            android:name="com.example.pokedex.ListFragment"
-            tools:layout="@layout/fragment_list">
+    </androidx.fragment.app.FragmentContainerView>
 
-        </androidx.fragment.app.FragmentContainerView>
-    </RelativeLayout>
 </layout>
