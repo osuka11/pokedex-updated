@@ -27,18 +27,29 @@ class PokemonDetailFragment : Fragment() {
          binding = FragmentPokemonDetailBinding.inflate(inflater)
 
         setPokemonData(pokemonargs.pokemon)
+        setupToolbar(pokemonargs.pokemon.name)
+        binding.playButton.setOnClickListener {
+            val mediaPlayer = MediaPlayer.create(requireActivity(),pokemonargs.pokemon.sound)
+            mediaPlayer.start()
+        }
 
         return binding.root
     }
+
+    private fun setupToolbar(pokemonName: String) {
+        val toolbar = binding.detailToolbar
+        toolbar.title = pokemonName
+        toolbar.setNavigationIcon(R.drawable.arrow_back_basic_svgrepo_com)
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+
+        }
+    }
+
     private fun setPokemonData(pokemon: Pokemon){
         binding.loadingWheel.visibility = View.VISIBLE
-
-
-        binding.fragmentDetailHp.text = getString(R.string.hp_format,pokemon.hp)
-        binding.fragmentDetailAttack.text = getString(R.string.attack_format,pokemon.attack)
-        binding.fragmentDetailSpeed.text = getString(R.string.speed_format,pokemon.speed)
-        binding.fragmentDetailDefense.text = getString(R.string.defense_format,pokemon.defense)
         val  imageView = binding.fragmentDetailImage
+
         Glide.with(this).load(pokemon.imageUrl).listener(object : RequestListener<Drawable> {
 
 
@@ -65,8 +76,12 @@ class PokemonDetailFragment : Fragment() {
 
         }).into(imageView)
 
-        val mediaPlayer = MediaPlayer.create(requireActivity(),pokemon.sound)
-        mediaPlayer.start()
+        binding.fragmentDetailHp.text = getString(R.string.hp_format,pokemon.hp)
+        binding.fragmentDetailAttack.text = getString(R.string.attack_format,pokemon.attack)
+        binding.fragmentDetailSpeed.text = getString(R.string.speed_format,pokemon.speed)
+        binding.fragmentDetailDefense.text = getString(R.string.defense_format,pokemon.defense)
+
+
 
     }
 

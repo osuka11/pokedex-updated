@@ -40,7 +40,7 @@ class ListFragment : Fragment() {
         recycler.adapter = adapter
 
         adapter.onItemClickListener = {
-            Toast.makeText(requireActivity(),it.name,Toast.LENGTH_SHORT).show()
+            pokemonSelectedListener.onPokemonSelected(it)
         }
         val pokemonList = mutableListOf(
             Pokemon(1, "Bulbasaur", 45, 49,

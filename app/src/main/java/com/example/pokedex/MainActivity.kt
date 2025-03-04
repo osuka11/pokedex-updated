@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), ListFragment.PokemonSelectedListener {
 
     override fun onPokemonSelected(pokemon: Pokemon) {
         //detailsFragment.setPokemonData(pokemon)
-        findNavController(R.id.main_nav_graph).navigate(ListFragmentDirections.actionListFragmentToPokemonDetailFragment(pokemon))
+        findNavController(R.id.main_nav_container).navigate(ListFragmentDirections.actionListFragmentToPokemonDetailFragment(pokemon))
 
     }
 }
