@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import com.example.pokedex.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), ListFragment.PokemonSelectedListener {
+class MainActivity : AppCompatActivity(){
    // private lateinit var detailsFragment: DetailsFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +20,5 @@ class MainActivity : AppCompatActivity(), ListFragment.PokemonSelectedListener {
 
     }
 
-    override fun onPokemonSelected(pokemon: Pokemon) {
-        //detailsFragment.setPokemonData(pokemon)
-        findNavController(R.id.main_nav_container).navigate(ListFragmentDirections.actionListFragmentToPokemonDetailFragment(pokemon))
 
-    }
 }

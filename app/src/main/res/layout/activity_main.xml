@@ -6,16 +6,190 @@
     <data>
 
     </data>
-
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_nav_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav_graph">
+        android:orientation="vertical">
 
-    </androidx.fragment.app.FragmentContainerView>
+        <LinearLayout
+            android:id="@+id/first_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/first_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/primera_generaci_n"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/second_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/secondGent"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/second_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/third_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tercera Generacion"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fourth_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cuarta Generacion"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/third_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/Fifth_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quinta Generación"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/Sixth_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sexta Generacion"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/fourth_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/seven_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Septima Generacion"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/Eigth_gen"
+                style="@style/CardView_Pokedex_Main">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Octava Generacion"
+                        style="@style/TextView_inCard">
+
+                    </TextView>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </layout>

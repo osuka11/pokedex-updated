@@ -12,4 +12,7 @@ In hac habitasse platea dictumst. Nullam volutpat augue massa, sit amet luctus e
 
 Curabitur in dui at elit mollis convallis quis maximus purus. In ultricies tincidunt metus, ut elementum elit feugiat vel. Suspendisse viverra nunc ligula, quis finibus nisl consequat sed. Aenean id vulputate mi, sed aliquam tortor. Morbi volutpat cursus placerat. Nam eu arcu urna. Fusce non tellus suscipit, volutpat nisi tempus, varius tortor. Cras metus orci, scelerisque ut eros in, condimentum suscipit mi. Nunc eget magna auctor, sagittis est ac, eleifend nulla. Fusce mattis odio id dolor tincidunt egestas.</string>
     <string name="play_pokemon_sound">Play Pokemon sound</string>
+    <string name="first_gen">Primera generación</string>
+    <string name="primera_generaci_n">Primera generación</string>
+    <string name="secondGent">Segunda generación</string>
 </resources>
