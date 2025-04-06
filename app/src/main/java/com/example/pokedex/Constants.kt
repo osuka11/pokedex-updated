@@ -1,0 +1,6 @@
+package com.example.pokedex
+
+object Constants {
+    const val BASE_URL = "https://pokeapi.co/api/v2/"
+    const val ALL_POKEMON_LIST = "pokemon?limit=151&offset=0"
+}

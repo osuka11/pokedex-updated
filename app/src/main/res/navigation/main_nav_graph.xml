@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailFragment"
-        android:name="com.example.pokedex.PokemonDetailFragment"
+        android:name="com.example.pokedex.detail.PokemonDetailFragment"
         android:label="PokemonDetailFragment"
         tools:layout="@layout/fragment_pokemon_detail" >
         <argument android:name="pokemon"

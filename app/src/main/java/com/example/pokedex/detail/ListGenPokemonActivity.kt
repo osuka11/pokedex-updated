@@ -1,10 +1,7 @@
-package com.example.pokedex
+package com.example.pokedex.detail
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.pokedex.databinding.ActivityListGenPokemonBinding
 
 class ListGenPokemonActivity : AppCompatActivity() {
@@ -20,6 +17,8 @@ class ListGenPokemonActivity : AppCompatActivity() {
         val bundle = intent.extras
 
         binding.optText.text = bundle?.getInt(OPTION_KEY).toString()
+
+
 
 
     }

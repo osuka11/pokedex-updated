@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pokedex.databinding.ActivityMainBinding
+import com.example.pokedex.detail.ListGenPokemonActivity
 
 class MainActivity : AppCompatActivity(){
    // private lateinit var detailsFragment: DetailsFragment
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun openListActivity(opt: Int) {
-        val intent = Intent(this,ListGenPokemonActivity::class.java)
+        val intent = Intent(this, ListGenPokemonActivity::class.java)
         intent.putExtra(ListGenPokemonActivity.OPTION_KEY,opt)
         startActivity(intent)
 
