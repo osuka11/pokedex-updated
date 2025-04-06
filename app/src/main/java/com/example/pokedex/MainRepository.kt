@@ -29,7 +29,7 @@ class MainRepository {
                 pokemonList.add(parsePokemonResults(pokemonResponse))
 
             }
-            Log.d(tag,pokemonList.toString())
+
 
             pokemonList
         }
@@ -52,7 +52,8 @@ class MainRepository {
                 "attack" -> attack = stat.base_stat
             }
         }
-        val type = mapTypeFromApiSafe(pokemonResponse.types.typeInfo.name)
+        val typeName = pokemonResponse.types[0].typeInfo.name
+        val type = mapTypeFromApiSafe(typeName)
         val imageUrl = pokemonResponse.sprites.front_default
         return Pokemon(id,name,hp,speed,attack,defense,type,imageUrl!!,1 )
     }
