@@ -6,14 +6,24 @@ import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PokeApiService{
     @GET(Constants.ALL_POKEMON_LIST) //This is the endpoint
-    suspend fun getLastHourEarthquakes(
+    suspend fun getPokemonListUrls(
+    @Query("limit") limit: Int = 151,
+    @Query("offset") offset: Int = 0
+    ):PokemonListResponse
 
-    ):PokemonResponse
+    @GET("pokemon/{name}")
+    suspend fun getPokemon(
+        @Path("name") name: String
+    ): PokemonResponse
 
 }
+
+
 
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 

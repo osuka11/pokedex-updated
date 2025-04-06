@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedex.databinding.FragmentListBinding
+import com.example.pokedex.api.Pokemon
 import com.example.pokedex.databinding.PokemonListBinding
 
 class PokemonAdapter:ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBack) {
@@ -28,11 +28,25 @@ class PokemonAdapter:ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBac
             binding.pokemonName.text = pokemon.name
             when(pokemon.type){
 
-                Pokemon.PokemonType.WATER -> binding.pokemonTypeImage.setImageResource(R.drawable.water_icon)
-                Pokemon.PokemonType.FIRE -> binding.pokemonTypeImage.setImageResource(R.drawable.fire_icon)
-                Pokemon.PokemonType.FIGHT -> binding.pokemonTypeImage.setImageResource(R.drawable.fight_icon)
-                Pokemon.PokemonType.GRASS ->  binding.pokemonTypeImage.setImageResource(R.drawable.grass_icon)
-                Pokemon.PokemonType.ELECTRIC -> binding.pokemonTypeImage.setImageResource(R.drawable.electric_icon)
+                Pokemon.Type.WATER -> binding.pokemonTypeImage.setImageResource(R.drawable.water_icon)
+                Pokemon.Type.FIRE -> binding.pokemonTypeImage.setImageResource(R.drawable.fire_icon)
+                Pokemon.Type.FIGHTING -> binding.pokemonTypeImage.setImageResource(R.drawable.fight_icon)
+                Pokemon.Type.GRASS ->  binding.pokemonTypeImage.setImageResource(R.drawable.grass_icon)
+                Pokemon.Type.ELECTRIC -> binding.pokemonTypeImage.setImageResource(R.drawable.electric_icon)
+                Pokemon.Type.NORMAL -> TODO()
+                Pokemon.Type.ICE -> TODO()
+                Pokemon.Type.POISON -> TODO()
+                Pokemon.Type.GROUND -> TODO()
+                Pokemon.Type.FLYING -> TODO()
+                Pokemon.Type.PSYCHIC -> TODO()
+                Pokemon.Type.BUG -> TODO()
+                Pokemon.Type.ROCK -> TODO()
+                Pokemon.Type.GHOST -> TODO()
+                Pokemon.Type.DARK -> TODO()
+                Pokemon.Type.DRAGON -> TODO()
+                Pokemon.Type.STEEL -> TODO()
+                Pokemon.Type.FAIRY -> TODO()
+                Pokemon.Type.UNKNOWN -> TODO()
             }
             binding.root.setOnClickListener {
                 if(::onItemClickListener.isInitialized){

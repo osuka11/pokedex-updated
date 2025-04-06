@@ -23,6 +23,6 @@
         android:label="PokemonDetailFragment"
         tools:layout="@layout/fragment_pokemon_detail" >
         <argument android:name="pokemon"
-            app:argType="com.example.pokedex.Pokemon" />
+            app:argType="com.example.pokedex.api.Pokemon" />
     </fragment>
 </navigation>

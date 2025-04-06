@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokedex.api.Pokemon
 import com.example.pokedex.databinding.FragmentListBinding
 
 
@@ -42,6 +42,7 @@ class ListFragment : Fragment() {
         adapter.onItemClickListener = {
             pokemonSelectedListener.onPokemonSelected(it)
         }
+        /*
         val pokemonList = mutableListOf(
             Pokemon(1, "Bulbasaur", 45, 49,
                 49, 45, Pokemon.PokemonType.GRASS, "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.bulbagarden.net%2Fupload%2Fthumb%2F1%2F19%2FAsh_Bulbasaur.png%2F1200px-Ash_Bulbasaur.png&f=1&nofb=1", R.raw.bulbasaur
@@ -89,6 +90,8 @@ class ListFragment : Fragment() {
         )
 
         adapter.submitList(pokemonList)
+
+         */
 
         return view.root
     }
