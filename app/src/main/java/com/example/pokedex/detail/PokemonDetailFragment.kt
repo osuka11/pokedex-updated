@@ -3,6 +3,7 @@ package com.example.pokedex.detail
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,10 +32,15 @@ class PokemonDetailFragment : Fragment() {
 
         setPokemonData(pokemonargs.pokemon)
         setupToolbar(pokemonargs.pokemon.name)
+        Log.d("I am Here","I am Here on DetailFragment")
+
+        /*
         binding.playButton.setOnClickListener {
             val mediaPlayer = MediaPlayer.create(requireActivity(),pokemonargs.pokemon.sound)
             mediaPlayer.start()
         }
+
+         */
 
 
         return binding.root

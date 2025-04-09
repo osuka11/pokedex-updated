@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Pokedex"
         tools:targetApi="31">
         <activity
-            android:name=".detail.ListGenPokemonActivity"
+            android:name=".list.ListGenPokemonActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

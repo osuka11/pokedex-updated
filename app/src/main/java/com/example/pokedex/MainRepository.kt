@@ -1,6 +1,5 @@
 package com.example.pokedex
 
-import android.util.Log
 import com.example.pokedex.api.Pokemon
 import com.example.pokedex.api.PokemonList
 import com.example.pokedex.api.PokemonResponse
@@ -20,15 +19,23 @@ class MainRepository {
 
     }
 
-    suspend fun fetchPokemon(): MutableList<Pokemon>{
+    suspend fun fetchPokemon(offset: Int, limit:Int ): MutableList<Pokemon>{
         return withContext(Dispatchers.IO){
-            val pokemonListResponse = fetchPokemonList()
+            //val pokemonListResponse = fetchPokemonList()
             val pokemonList = mutableListOf<Pokemon>()
+
+            for (id in offset until limit){
+                val pokemonResponse = service.getPokemon(id)
+                pokemonList.add(parsePokemonResults(pokemonResponse))
+            }
+            /*
             for(pokemon in pokemonListResponse){
                 val pokemonResponse = service.getPokemon(pokemon.name)
                 pokemonList.add(parsePokemonResults(pokemonResponse))
 
             }
+
+             */
 
 
             pokemonList

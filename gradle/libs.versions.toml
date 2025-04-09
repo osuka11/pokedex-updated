@@ -14,7 +14,7 @@ recyclerView = "1.4.0"
 ksp = "2.0.21-1.0.27"
 parcelize = "1.8.10"
 glide = "4.16.0"
-navigation  = "2.8.8"
+navigation  = "2.8.9"
 navigationFragmentKtx = "2.8.9"
 navigationUiKtx = "2.8.9"
 retrofit = "2.11.0"
@@ -45,6 +45,8 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 moshi = {group ="com.squareup.retrofit2", name = "converter-moshi", version.ref ="retrofit" }
 moshi-builder = {group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi"}
 ksp-moshi = {group="com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi"}
+navigation-safe-args = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation" }
+
 
 
 [plugins]
@@ -52,6 +54,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp-devtools = {id = "com.google.devtools.ksp", version.ref = "ksp"}
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "parcelize"  }
-navigation-safe-args={id="androidx.navigation.safeargs",version.ref="navigation"}
+navigation-safe-args={id="androidx.navigation.safeargs.kotlin",version.ref="navigation"}
 
 

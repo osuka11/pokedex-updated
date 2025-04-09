@@ -1,16 +1,25 @@
-package com.example.pokedex
+package com.example.pokedex.list
 
-import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.MainRepository
 import com.example.pokedex.api.Pokemon
-import com.example.pokedex.api.PokemonList
 import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
+class ListGenViewModel(application: FragmentActivity, private val offset: Int, private val limit: Int) : AndroidViewModel(application.application) {
+    /*
+    private var _offset = MutableLiveData<Int>()
+    val offset: LiveData<Int>
+        get() = _offset
 
+    private var _limit = MutableLiveData<Int>()
+    val limit: LiveData<Int>
+        get() = _limit
+
+     */
 
     private var _pokemonList = MutableLiveData<MutableList<Pokemon>>()
     val pokemonList: LiveData<MutableList<Pokemon>>
@@ -32,7 +41,7 @@ class MainViewModel: ViewModel() {
             }
 
              */
-            _pokemonList.value = repository.fetchPokemon()
+            _pokemonList.value = repository.fetchPokemon(offset, limit)
 
         }
     }

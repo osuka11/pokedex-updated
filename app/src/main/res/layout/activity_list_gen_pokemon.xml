@@ -7,21 +7,13 @@
 
     </data>
 
-    <LinearLayout
-        android:id="@+id/main"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_nav_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".detail.ListGenPokemonActivity">
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        tools:layout="@layout/fragment_list">
 
-        <TextView
-            android:id="@+id/opt_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            tools:text="Generacion 5"
-            android:textSize="24sp">
-
-        </TextView>
-
-    </LinearLayout>
+    </androidx.fragment.app.FragmentContainerView>
 </layout>
