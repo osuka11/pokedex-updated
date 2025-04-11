@@ -15,4 +15,5 @@ Curabitur in dui at elit mollis convallis quis maximus purus. In ultricies tinci
     <string name="first_gen">Primera generación</string>
     <string name="primera_generaci_n">Primera generación</string>
     <string name="secondGent">Segunda generación</string>
+    <string name="no_items_on_the_list">"No items on the list "</string>
 </resources>

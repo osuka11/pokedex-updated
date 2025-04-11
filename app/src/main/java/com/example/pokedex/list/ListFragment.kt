@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedex.PokemonAdapter
+import com.example.pokedex.api.ApiResponseStatus
 import com.example.pokedex.api.Pokemon
 import com.example.pokedex.databinding.FragmentListBinding
 
@@ -67,8 +68,16 @@ class ListFragment : Fragment() {
 
         viewModel.pokemonList.observe(viewLifecycleOwner) { pokemonList ->
             adapter.submitList(pokemonList)
-            Log.d("PokemonList",pokemonList.toString())
+            handleEmptyView(pokemonList,view)
 
+        }
+        viewModel.status.observe(viewLifecycleOwner) {
+                apiResponseStatus ->
+            when (apiResponseStatus) {
+                ApiResponseStatus.LOADING -> view.progressBar.visibility = View.VISIBLE
+                ApiResponseStatus.DONE -> view.progressBar.visibility = View.GONE
+                ApiResponseStatus.ERROR -> view.progressBar.visibility = View.GONE
+            }
         }
 
         adapter.onItemClickListener = {
@@ -77,12 +86,14 @@ class ListFragment : Fragment() {
 
         return view.root
     }
-    /*
-    fun setPokemonList(offset: Int, limit: Int){
+    private fun handleEmptyView(eqList: MutableList<Pokemon>, binding: FragmentListBinding) {
+        if (eqList.isEmpty()) {
+            binding.emptyView.visibility = View.VISIBLE
+        } else {
+            binding.emptyView.visibility = View.GONE
 
+        }
     }
-
-     */
 
 
 }

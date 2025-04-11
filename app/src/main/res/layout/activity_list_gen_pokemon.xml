@@ -6,14 +6,21 @@
     <data>
 
     </data>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_nav_container"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        tools:layout="@layout/fragment_list">
+        android:layout_height="match_parent">
 
-    </androidx.fragment.app.FragmentContainerView>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_nav_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            tools:layout="@layout/fragment_list">
+
+        </androidx.fragment.app.FragmentContainerView>
+
+
+    </FrameLayout>
+
 </layout>

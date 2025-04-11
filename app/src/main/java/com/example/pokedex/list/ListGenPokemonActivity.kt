@@ -27,25 +27,17 @@ class ListGenPokemonActivity : AppCompatActivity(),ListFragment.PokemonSelectedL
         val binding = ActivityListGenPokemonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_container) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_nav_container) as NavHostFragment
         val navController = navHostFragment.navController
         val bundle = intent.extras
-        val offset = bundle?.getInt(OFFSET_KEY) ?:0
+        val offset = bundle?.getInt(OFFSET_KEY) ?: 0
         val limit = bundle?.getInt(LIMIT_KEY) ?: 0
 
-        println(offset)
-        println(limit)
 
-        //val args = ListFragmentArgs(offset, limit).toBundle()
         val args = bundleOf("offset" to offset, "limit" to limit)
 
         navController.setGraph(R.navigation.main_nav_graph, args)
-
-
-
-        //listFragment = supportFragmentManager.findFragmentById(R.id.main_nav_container) as ListFragment
-        //listFragment.setPokemonList(offset!!,limit!!)
-
 
 
 

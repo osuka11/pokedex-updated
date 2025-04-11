@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(){
 
     private fun setupBindingOptionCard() {
         binding.firstGen.setOnClickListener {
-            openListActivity(1, 0,150)
+            openListActivity(1, 1,150)
         }
         binding.secondGen.setOnClickListener {
             openListActivity(2, 151,251 )
