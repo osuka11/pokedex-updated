@@ -20,12 +20,13 @@ class PokemonAdapter:ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBac
 
     }
     lateinit var onItemClickListener: (pokemon: Pokemon) -> Unit
-    inner class ViewHolder(private val binding: PokemonListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: PokemonListBinding, private val parent: ViewGroup): RecyclerView.ViewHolder(binding.root) {
 
 
         fun bind(pokemon: Pokemon){
-            binding.pokemonId.text = pokemon.id.toInt().toString()
-            binding.pokemonName.text = pokemon.name
+            binding.pokemonId.text = parent.context.getString(R.string.id_format,pokemon.id)
+            val nameFormatted = pokemon.name.replaceFirstChar { it.uppercaseChar() }
+            binding.pokemonName.text = nameFormatted
             when(pokemon.type){
 
                 Pokemon.Type.WATER -> binding.pokemonTypeImage.setImageResource(R.drawable.water_icon)
@@ -58,7 +59,7 @@ class PokemonAdapter:ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBac
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = PokemonListBinding.inflate(LayoutInflater.from(parent.context))
-        return ViewHolder(binding)
+        return ViewHolder(binding, parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -6,5 +6,6 @@ import com.squareup.moshi.JsonClass
 data class PokemonResponse(val id: Long,
                            val name: String, val stats: List<PokemonStat>,
                            val types: List<PokemonType>,
-                           val sprites:Sprites) {
+                           val sprites:Sprites,
+    val cries:Cries) {
 }

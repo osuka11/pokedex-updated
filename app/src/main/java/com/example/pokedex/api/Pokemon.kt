@@ -12,7 +12,7 @@ data class Pokemon(val id: Long,
                    val defense: Int,
                    val type: Type,
                    val imageUrl:String,
-                   val sound: Int):Parcelable {
+                   val soundUrl: String):Parcelable {
 
 
     enum class Type{

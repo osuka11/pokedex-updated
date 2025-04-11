@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -34,13 +36,18 @@ class PokemonDetailFragment : Fragment() {
         setupToolbar(pokemonargs.pokemon.name)
         Log.d("I am Here","I am Here on DetailFragment")
 
-        /*
+
         binding.playButton.setOnClickListener {
-            val mediaPlayer = MediaPlayer.create(requireActivity(),pokemonargs.pokemon.sound)
-            mediaPlayer.start()
+            try {
+                val mediaPlayer = MediaPlayer.create(requireActivity(),pokemonargs.pokemon.soundUrl.toUri())
+                mediaPlayer.start()
+            }catch (e:Exception){
+                Log.d("Error audio",e.toString())
+                Toast.makeText(requireActivity(),"Audio no Disponible",Toast.LENGTH_SHORT).show()
+            }
+
         }
 
-         */
 
 
         return binding.root

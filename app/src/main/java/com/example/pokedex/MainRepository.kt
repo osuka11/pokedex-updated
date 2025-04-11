@@ -62,7 +62,8 @@ class MainRepository {
         val typeName = pokemonResponse.types[0].typeInfo.name
         val type = mapTypeFromApiSafe(typeName)
         val imageUrl = pokemonResponse.sprites.front_default
-        return Pokemon(id,name,hp,speed,attack,defense,type,imageUrl!!,1 )
+        val soundUrl = pokemonResponse.cries.latest
+        return Pokemon(id,name,hp,speed,attack,defense,type,imageUrl!!,soundUrl!! )
     }
 
     private fun mapTypeFromApiSafe(typeName: String): Pokemon.Type {
