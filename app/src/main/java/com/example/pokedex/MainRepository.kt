@@ -4,13 +4,15 @@ import com.example.pokedex.api.Pokemon
 import com.example.pokedex.api.PokemonList
 import com.example.pokedex.api.PokemonResponse
 import com.example.pokedex.api.service
+import com.example.pokedex.database.PokeDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 private val tag = MainRepository::class.java.simpleName
 
 
-class MainRepository {
+class MainRepository(val database: PokeDatabase) {
+
     private suspend fun fetchPokemonList():MutableList<PokemonList> {
         return withContext(Dispatchers.IO){
             val response = service.getPokemonListUrls()
@@ -21,24 +23,20 @@ class MainRepository {
 
     suspend fun fetchPokemon(offset: Int, limit:Int ): MutableList<Pokemon>{
         return withContext(Dispatchers.IO){
-            //val pokemonListResponse = fetchPokemonList()
             val pokemonList = mutableListOf<Pokemon>()
 
             for (id in offset until limit){
                 val pokemonResponse = service.getPokemon(id)
                 pokemonList.add(parsePokemonResults(pokemonResponse))
             }
-            /*
-            for(pokemon in pokemonListResponse){
-                val pokemonResponse = service.getPokemon(pokemon.name)
-                pokemonList.add(parsePokemonResults(pokemonResponse))
+            database.pokeDao.insertAll(pokemonList)
 
-            }
-
-             */
-
-
-            pokemonList
+            fetchPokemonByDatabase(offset,limit)
+        }
+    }
+    suspend fun fetchPokemonByDatabase(offset: Int, limit:Int):MutableList<Pokemon> {
+        return withContext(Dispatchers.IO){
+            database.pokeDao.getAllPokemons(offset,limit)
         }
     }
 

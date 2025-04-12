@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pokedex.MainRepository
 import com.example.pokedex.api.ApiResponseStatus
 import com.example.pokedex.api.Pokemon
+import com.example.pokedex.database.getDatabase
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 
@@ -24,10 +25,12 @@ class ListGenViewModel(application: FragmentActivity, private val offset: Int, p
     private val _status = MutableLiveData<ApiResponseStatus>()
     val status: LiveData<ApiResponseStatus> get() = _status
 
-    private val repository = MainRepository()
+    private val database = getDatabase(application)
+
+    private val repository = MainRepository(database)
 
     init {
-        fetchPokemonList()
+        fetchPokemonListByDataBase()
     }
 
     private fun fetchPokemonList(){
@@ -42,6 +45,14 @@ class ListGenViewModel(application: FragmentActivity, private val offset: Int, p
             }
 
 
+        }
+    }
+    private fun fetchPokemonListByDataBase(){
+        viewModelScope.launch {
+            _pokemonList.value = repository.fetchPokemonByDatabase(offset,limit)
+            if(_pokemonList.value!!.isEmpty()){
+                fetchPokemonList()
+            }
         }
     }
 
