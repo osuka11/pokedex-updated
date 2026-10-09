@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/selectionGen">
+
+
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.pokedex.ListFragment"
+        android:name="com.example.pokedex.list.ListFragment"
         android:label="ListFragment"
         tools:layout="@layout/fragment_list">
+
         <action
             android:id="@+id/action_listFragment_to_pokemonDetailFragment"
             app:destination="@id/pokemonDetailFragment"
@@ -16,6 +19,12 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right"/>
+        <argument
+            android:name="offset"
+            app:argType="integer" />
+        <argument
+            android:name="limit"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailFragment"
@@ -23,6 +32,20 @@
         android:label="PokemonDetailFragment"
         tools:layout="@layout/fragment_pokemon_detail" >
         <argument android:name="pokemon"
-            app:argType="com.example.pokedex.Pokemon" />
+            app:argType="com.example.pokedex.api.Pokemon" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectionGen"
+        android:name="com.example.pokedex.SelectionGen"
+        android:label="SelectionGen"
+        tools:layout="@layout/fragment_selection_gen">
+
+        <action
+            android:id="@+id/action_selectionGen_to_listFragment4"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
 </navigation>

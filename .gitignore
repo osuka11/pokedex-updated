@@ -1,51 +1,41 @@
-<<<<<<< HEAD
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
-=======
-# Gradle files
+#Gradle radle
 .gradle/
-build/
+**/build/
 
-# Local configuration file (sdk path, etc)
+# Local configuration
 local.properties
 
-# Log/OS Files
-*.log
+# Android Studio / IntelliJ
+*.iml
+.idea/
 
-# Android Studio generated files and folders
+# Generated files
 captures/
 .externalNativeBuild/
 .cxx/
 *.apk
+*.aab
+*.ap_
+*.class
 output.json
+*.hprof
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+# macOS
+.DS_Store
 
-# Keystore files
+# Logs
+*.log
+
+# Signing credentials
 *.jks
 *.keystore
+keystore.properties
 
-# Google Services (e.g. APIs or Firebase)
+# Environment files
+.env
+.env.*
+
+# Google Services (if not intended to be tracked)
 google-services.json
 
-# Android Profiling
-*.hprof
->>>>>>> 033f8431a4fe715d20b31636e299a201151975ff
+

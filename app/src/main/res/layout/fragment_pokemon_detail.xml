@@ -16,6 +16,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
              
             <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -42,9 +43,8 @@
                     android:id="@+id/detail_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:title="@string/app_name"
                     app:titleTextColor="@color/white"
-                    app:layout_collapseMode="pin"/>
+                    app:layout_collapseMode="parallax"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -139,6 +139,17 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/next_pokemon_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="Next Pokémon"
+            android:src="@drawable/ic_arrow_up" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/play_button"
