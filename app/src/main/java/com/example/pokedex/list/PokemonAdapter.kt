@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.R
 import com.example.pokedex.api.Pokemon
-import com.example.pokedex.databinding.PokemonListBinding
+import com.example.pokedex.databinding.PokemonListItemBinding
 
 class PokemonAdapter: ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBack) {
     companion object DiffCallBack: DiffUtil.ItemCallback<Pokemon>() {
@@ -21,7 +21,7 @@ class PokemonAdapter: ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBa
 
     }
     lateinit var onItemClickListener: (pokemon: Pokemon) -> Unit
-    inner class ViewHolder(private val binding: PokemonListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: PokemonListItemBinding): RecyclerView.ViewHolder(binding.root) {
 
 
         fun bind(pokemon: Pokemon){
@@ -57,7 +57,7 @@ class PokemonAdapter: ListAdapter<Pokemon, PokemonAdapter.ViewHolder>(DiffCallBa
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = PokemonListBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = PokemonListItemBinding.inflate(LayoutInflater.from(parent.context))
         return ViewHolder(binding)
     }
 
