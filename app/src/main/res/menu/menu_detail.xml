@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/favorite_action"
+        android:title="@string/add_new_favorite_pokemon"
+        android:icon="@drawable/heart1"
+        app:showAsAction="always" />
 
 </menu>

@@ -4,34 +4,32 @@ import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
-import android.view.GestureDetector
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.navArgs
+import androidx.lifecycle.viewModelScope
 import androidx.viewpager2.widget.ViewPager2
+import com.example.pokedex.Utils.Util.isFavorite
+import com.example.pokedex.api.FavoritePokemon
 import com.example.pokedex.databinding.FragmentPokemonDetailBinding
 import com.example.pokedex.main.MainViewModel
 import com.example.pokedex.main.MainViewModelFactory
-import kotlin.math.abs
+import kotlinx.coroutines.launch
+import okhttp3.internal.notify
+import okhttp3.internal.notifyAll
 
 class PokemonDetailFragment : Fragment() {
     private lateinit var binding: FragmentPokemonDetailBinding
 
-    companion object{
-        const val SWIPE_MIN_DISTANCE: Int = 50
 
-        const val SWIPE_THRESHOLD_VELOCITY: Int = 50
-    }
-
-    private lateinit var gestureDetector: GestureDetector
-    //private val pokemonargs: PokemonDetailFragmentArgs by navArgs()
 
     private val viewModel: MainViewModel by activityViewModels {
         MainViewModelFactory(
@@ -41,11 +39,11 @@ class PokemonDetailFragment : Fragment() {
 
 
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
          binding = FragmentPokemonDetailBinding.inflate(inflater)
@@ -77,14 +75,22 @@ class PokemonDetailFragment : Fragment() {
 
             }
         })
+        adapter.onFavoritePokemonAction = {
+            viewModel.updateFavoritePokemonList(it)
+
+
+        }
+        viewModel.favoritePokemonList.observe(viewLifecycleOwner) { favorites ->
+
+            adapter.updateFavorites(favorites)
+            Log.d("VM",favorites.joinToString { it.id.toString() })
+
+
+        }
         viewModel.currentPokemon.observe(viewLifecycleOwner, Observer{
-            //todo
+            Log.d("CURR",it.name)
         })
 
-        //setPokemonData(pokemonargs.pokemon)
-
-        //setupToolbar(pokemonargs.pokemon.name)
-        binding.root.setOnTouchListener { view, event -> gestureDetector.onTouchEvent(event) }
         binding.playButton.setOnClickListener {
             try {
                 val mediaPlayer = MediaPlayer.create(requireActivity(),viewModel.currentPokemon.value!!.sound.toUri())
@@ -96,9 +102,19 @@ class PokemonDetailFragment : Fragment() {
 
         }
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val statusBars = insets.getInsets(
+                WindowInsetsCompat.Type.statusBars()
+            )
+
+            view.updatePadding(top = statusBars.top)
+            insets
+        }
 
         return binding.root
     }
+
+
 
 
 

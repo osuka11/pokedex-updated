@@ -16,4 +16,7 @@ object Util {
             newItem: Pokemon
         ) = oldItem == newItem
     }
+
+    fun Pokemon.isFavorite(favoriteIds:List<Pokemon>) = favoriteIds.map { it.id }.toSet().contains(this.id)
+
 }

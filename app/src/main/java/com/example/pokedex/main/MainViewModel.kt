@@ -7,7 +7,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.Utils.Util.isFavorite
 import com.example.pokedex.api.ApiResponseStatus
+import com.example.pokedex.api.FavoritePokemon
 import com.example.pokedex.api.Pokemon
 import com.example.pokedex.database.getDatabase
 import kotlinx.coroutines.launch
@@ -38,10 +40,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
+
     val database = getDatabase(application)
 
 
     val repository = MainRepository(database)
+
+    val favoritePokemonList = repository.favoritePokemonList
+
 
 
     init {
@@ -49,6 +55,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         setOffsetLimit(1,150)
         viewModelScope.launch {
             fetchPokemonListByDataBase()
+
         }
 
 
@@ -93,6 +100,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setCurrentPokemon(pokemon: Pokemon){
         _currentPokemon.value = pokemon
     }
+
     fun nextPokemon(){
 
         viewModelScope.launch {
@@ -111,4 +119,34 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
         }
     }
+
+    fun addToFavorites(favoritePokemon: FavoritePokemon) {
+        viewModelScope.launch {
+            repository.addToFavorites(favoritePokemon)
+        }
+    }
+    fun updateFavoritePokemonList(pokemon: Pokemon){
+
+        Log.d("VM",pokemon.name)
+
+        viewModelScope.launch {
+            if (pokemon.isFavorite(favoritePokemonList.value!!)){
+                repository.deleteFavoritePokemon(FavoritePokemon(pokemon.id))
+                Log.d("VM","DELETE ${pokemon.id}")
+                //Log.d("VM",favoritePokemonList.value!!.joinToString{it.id.toString()})
+
+            }else{
+                repository.addToFavorites(FavoritePokemon(pokemon.id))
+
+                Log.d("VM","ADDED ${pokemon.id}")
+                //Log.d("VM",favoritePokemonList.value!!.joinToString{it.id.toString()})
+
+
+
+            }
+
+        }
+
+    }
+
 }

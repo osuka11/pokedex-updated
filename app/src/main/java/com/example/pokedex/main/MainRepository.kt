@@ -1,6 +1,8 @@
 package com.example.pokedex.main
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import com.example.pokedex.api.FavoritePokemon
 import com.example.pokedex.api.Pokemon
 import com.example.pokedex.api.PokemonResponse
 import com.example.pokedex.api.service
@@ -11,6 +13,8 @@ import kotlinx.coroutines.withContext
 class MainRepository(val db: PokeDataBase) {
 
     //val pokemonList: LiveData<MutableList<Pokemon>> = db.pokeDao.getPokemon()
+
+    val favoritePokemonList: LiveData<List<Pokemon>> = db.favoritePokemonDao.getAllFavoritePokemon()
     fun parsePokemon(pokemonResponse: PokemonResponse): Pokemon {
         val id = pokemonResponse.id
         val name = pokemonResponse.name
@@ -46,20 +50,6 @@ class MainRepository(val db: PokeDataBase) {
 
         return withContext(Dispatchers.IO){
             val pokemonList = mutableListOf<Pokemon>()
-
-            /*
-            for (i in offset..limit) {
-                val pokemonResponse = service.getPokemon(i)
-
-
-                pokemonList.add(parsePokemon(pokemonResponse))
-
-
-
-
-            }
-
-             */
             for (i in 1..906){
                 val pokemonResponse = service.getPokemon(i)
 
@@ -72,14 +62,22 @@ class MainRepository(val db: PokeDataBase) {
 
         }
 
-
     }
     suspend fun getPokemon(id:Long): Pokemon{
         return withContext(Dispatchers.IO){
             db.pokeDao.getPokemon(id)
         }
     }
-
+    suspend fun addToFavorites(favoritePokemon: FavoritePokemon){
+        return withContext(Dispatchers.IO){
+            db.favoritePokemonDao.addFavoritePokemon(favoritePokemon)
+        }
+    }
+    suspend fun deleteFavoritePokemon(favoritePokemon: FavoritePokemon){
+        return withContext(Dispatchers.IO){
+            db.favoritePokemonDao.deleteFavoritePokemon(favoritePokemon)
+        }
+    }
 
     fun mapTypeFromApi(typeName: String): Pokemon.PokemonType {
         return when (typeName.lowercase()) {
